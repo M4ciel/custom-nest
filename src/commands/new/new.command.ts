@@ -1,6 +1,8 @@
 import { Inject } from '@nestjs/common';
 import { Command, CommandRunner, InquirerService } from 'nest-commander';
-import * as messages from '../../libs/messages/new.message';
+import * as messages from 'src/libs/messages/new.message';
+import { cpSync, mkdirSync } from 'fs';
+import * as path from 'path';
 
 @Command({
 	name: 'new',
@@ -14,7 +16,27 @@ export class NewCommand extends CommandRunner {
 		super();
 	}
 
-	run(): Promise<void> {
-		throw new Error('Method not implemented.');
+	async run(): Promise<void> {
+		console.log(messages.default.messages.start);
+		console.log(messages.default.messages.wait);
+
+		const newValues = await this.inquirer.ask<{
+			newName: string;
+			newType: string;
+		}>('new-questions', null);
+
+		try {
+			const destinationPath = path.join(__dirname, newValues.newName);
+			const projectPath = path.join(
+				process.cwd(),
+				`src/libs/projects/${newValues.newType}`,
+			);
+
+			mkdirSync(destinationPath);
+
+			cpSync(projectPath, destinationPath, { recursive: true });
+		} catch (error) {
+			console.error(messages.default.messages.error, error);
+		}
 	}
 }
