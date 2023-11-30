@@ -7,7 +7,7 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/M4ciel/custom-nest?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/M4ciel/custom-nest?style=for-the-badge)
-![GitHub top language](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![GitHub top language](https://img.shields.io/github/languages/top/M4ciel/custom-nest?style=for-the-badge)
 ![GitHub issues](https://img.shields.io/github/issues/M4ciel/custom-nest?style=for-the-badge)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/M4ciel/custom-nest?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/M4ciel/custom-nest?style=for-the-badge)
