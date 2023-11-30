@@ -26,10 +26,14 @@ export class NewCommand extends CommandRunner {
 		}>('new-questions', null);
 
 		try {
-			const destinationPath = path.join(__dirname, newValues.newName);
-			const projectPath = path.join(
-				`src/libs/projects/${newValues.newType}`,
+			const destinationPath = path.join(process.cwd(), newValues.newName);
+			const projectPath = path.resolve(
+				__dirname,
+				`src/libs/projects`,
+				newValues.newType,
 			);
+
+			console.log(destinationPath, projectPath);
 
 			mkdirSync(destinationPath, { recursive: true });
 
