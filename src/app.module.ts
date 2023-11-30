@@ -3,6 +3,6 @@ import { NewModule } from './commands/new/new.module';
 
 @Module({
 	imports: [NewModule],
-	providers: [],
+	providers: [NewModule],
 })
 export class AppModule {}
