@@ -28,11 +28,10 @@ export class NewCommand extends CommandRunner {
 		try {
 			const destinationPath = path.join(__dirname, newValues.newName);
 			const projectPath = path.join(
-				process.cwd(),
 				`src/libs/projects/${newValues.newType}`,
 			);
 
-			mkdirSync(destinationPath);
+			mkdirSync(destinationPath, { recursive: true });
 
 			cpSync(projectPath, destinationPath, { recursive: true });
 		} catch (error) {
