@@ -29,11 +29,9 @@ export class NewCommand extends CommandRunner {
 			const destinationPath = path.join(process.cwd(), newValues.newName);
 			const projectPath = path.resolve(
 				__dirname,
-				`src/libs/projects`,
+				`../../../src/libs/projects`,
 				newValues.newType,
 			);
-
-			console.log(destinationPath, projectPath);
 
 			mkdirSync(destinationPath, { recursive: true });
 
