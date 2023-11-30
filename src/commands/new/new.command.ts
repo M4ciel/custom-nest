@@ -22,6 +22,7 @@ export class NewCommand extends CommandRunner {
 
 		const newValues = await this.inquirer.ask<{
 			newName: string;
+			newPackage: string;
 			newType: string;
 		}>('new-questions', null);
 
@@ -36,6 +37,22 @@ export class NewCommand extends CommandRunner {
 			mkdirSync(destinationPath, { recursive: true });
 
 			cpSync(projectPath, destinationPath, { recursive: true });
+
+			console.log(
+				messages.default.messages.after.success,
+				newValues.newName,
+			);
+			console.log(messages.default.messages.after.commands.message);
+
+			console.log(
+				messages.default.messages.after.commands.cd,
+				newValues.newName,
+			);
+			console.log(
+				'\n$',
+				newValues.newPackage,
+				messages.default.messages.after.commands.install,
+			);
 		} catch (error) {
 			console.error(messages.default.messages.error, error);
 		}
