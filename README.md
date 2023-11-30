@@ -14,42 +14,20 @@
 
 > The project in question is a CLI dedicated to creating a custom Nest project.
 
-## 💻 Prerequisites
-
-Before you begin, make sure you have met the following requirements:
-
-- You have [git](https://git-scm.com) installed on your machine.
-- You have [npm](https://www.npmjs.com) or [yarn](https://yarnpkg.com) installed on your machine.
-- You have installed [NodeJs](https://nodejs.org/en) in version 16.10 or higher.
-
-Optional and Details
-
-- To install yarn, you first need to have [npm](https://www.npmjs.com) installed, and then install it with the command `npm install --global yarn`
-
 ## 🚀 Installing Custom Nest
 
-To install the Custom Nest, follow these steps:
+- install globally through the npm package manager
 
-- First, clone the project to your chosen directory:
- HTTP: `git clone https://github.com/M4ciel/custom-nest.git`
- or
- SSH: `git clone git@github.com:M4ciel/custom-nest.git`
-
-- After cloning the project, navigate into it `cd custom-nest` and run the command:
- `yarn install` or `npm install`
- *It is recommended to use yarn for greater security and speed!*
+```bash
+$ npm install -g @m4ciel/custom-nest
+```
 
 ### To run the application
 
+- run the code
+
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run dev
-
-# production mode
-$ yarn run build
+$ cnest new
 ```
 
 ## 📝 License
