@@ -1,9 +1,10 @@
 import { Inject } from '@nestjs/common';
 import { Command, CommandRunner, InquirerService } from 'nest-commander';
+import * as messages from '../../libs/messages/new.message';
 
 @Command({
 	name: 'new',
-	description: 'Creating a new Nestjs Custom Application',
+	description: messages.default.description,
 })
 export class NewCommand extends CommandRunner {
 	constructor(
