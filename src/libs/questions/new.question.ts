@@ -31,4 +31,16 @@ export class NewQuestions {
 	parseNewType(val: string) {
 		return val;
 	}
+
+	@Question({
+		type: 'list',
+		message: messages.default.questions.microservices.description,
+		name: 'newMicroserviceType',
+		choices: messages.default.questions.microservices.choices,
+		when: (answers) =>
+			answers.newType === messages.default.questions.type.choices[2],
+	})
+	parseNewMicroserviceType(val: string) {
+		return val;
+	}
 }

@@ -1,8 +1,12 @@
 import { Inject } from '@nestjs/common';
+import { exec } from 'child_process';
 import { Command, CommandRunner, InquirerService } from 'nest-commander';
 import * as messages from 'src/libs/messages/new.message';
 import { cpSync, mkdirSync } from 'fs';
 import * as path from 'path';
+import { promisify } from 'util';
+
+const execAsync = promisify(exec);
 
 @Command({
 	name: 'new',
@@ -24,6 +28,7 @@ export class NewCommand extends CommandRunner {
 			newName: string;
 			newPackage: string;
 			newType: string;
+			newMicroserviceType?: string;
 		}>('new-questions', null);
 
 		try {
@@ -31,12 +36,19 @@ export class NewCommand extends CommandRunner {
 			const projectPath = path.resolve(
 				__dirname,
 				`../../../src/libs/projects`,
-				newValues.newType,
+				newValues.newMicroserviceType
+					? newValues.newType + '/' + newValues.newMicroserviceType
+					: newValues.newType,
 			);
 
 			mkdirSync(destinationPath, { recursive: true });
 
 			cpSync(projectPath, destinationPath, { recursive: true });
+
+			console.log(messages.default.messages.installing);
+			await execAsync(
+				`cd ${destinationPath} && ${newValues.newPackage} install`,
+			);
 
 			console.log(
 				messages.default.messages.after.success,
@@ -51,7 +63,9 @@ export class NewCommand extends CommandRunner {
 			console.log(
 				'\n$',
 				newValues.newPackage,
-				messages.default.messages.after.commands.install,
+				newValues.newPackage === 'yarn'
+					? messages.default.messages.after.commands.start
+					: 'run ' + messages.default.messages.after.commands.start,
 			);
 		} catch (error) {
 			console.error(messages.default.messages.error, error);
