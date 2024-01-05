@@ -1,6 +1,6 @@
 {
   "name": "@m4ciel/custom-nest",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "A Cli project to create custom nestjs projects!",
   "author": "Caio Maciel",
   "private": false,
